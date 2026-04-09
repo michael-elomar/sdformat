@@ -11,20 +11,15 @@ LOCAL_DESCRIPTION := Robot and simulation model format.
 LOCAL_CATEGORY_PATH := lib
 
 LOCAL_LIBRARIES := \
+	tinyxml2 \
+	gz-cmake \
 	gz-math \
 	gz-utils
 
-LOCAL_EXPORT_LDLIBS := -lsdformat16
+LOCAL_EXPORT_LDLIBS := -lsdformat
 
 LOCAL_CXXFLAGS := -std=c++17
-# LOCAL_EXPORT_C_INCLUDES := $(TARGET_OUT_STAGING)/usr/include/sdformat-9.10
-
-LOCAL_CMAKE_CONFIGURE_ARGS := \
-	-DBUILD_TESTING:BOOL=False \
-	-DUSE_UPSTREAM_CFLAGS:BOOL=False \
-	-DIGNITION-MATH_INCLUDE_DIRS=$(TARGET_OUT_STAGING)/usr/gz/math2 \
-	-DIGNITION-MATH_LIBRARIES=$(TARGET_OUT_STAGING)/usr/lib/libgz-math2.so \
-	-DIGNITION-MATH_LIBRARY_DIRS=$(TARGET_OUT_STAGING)/usr/lib
+LOCAL_EXPORT_C_INCLUDES := $(TARGET_OUT_STAGING)/usr/include/gz/sdformat16
 
 include $(BUILD_CMAKE)
 
